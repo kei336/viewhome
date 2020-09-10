@@ -1,0 +1,31 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+.main{
+  background-image:  image-url('q2.jpg');
+  background-size: cover;
+  margin:auto;
+
+  height:750px ;
+
+}
+.main-content{
+
+  padding-top:300px;
+
+}
+.navbar{
+  opacity:0.9;
+
+  
+}
+.photo-content img{
+  height: 550px;
+  width:auto;
+}
+
+.content-many{
+  padding-top:40px;
+}
