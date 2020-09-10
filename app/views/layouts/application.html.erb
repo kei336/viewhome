@@ -7,17 +7,12 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-default">
-      
-          <ul class="nav navbar-nav navbar">
-            <li><%= link_to "viewhome",   root_path %></li>
-            <li><%= link_to "viewhomeとは",   about_path %></li>
-          </ul>
-     
-    </header>
+    <%= render 'layouts/header' %>
+    
     <%= yield %>
   </body>
 </html>
