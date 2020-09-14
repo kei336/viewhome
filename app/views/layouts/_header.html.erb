@@ -5,6 +5,10 @@
     <li><%= link_to "viewhomeとは",   about_path %></li>
     <% if logged_in? %>
       <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      <li><%= link_to "マイページ", edit_user_path(current_user) %></li>
+        <% if admin_user? %>
+          <li><%= link_to "ユーザー一覧", users_path %></li>
+        <% end %>
     <% else %>
       <li><%= link_to "新規登録",   signup_path %></li>
       <li><%= link_to "ログイン",   login_path %></li>
