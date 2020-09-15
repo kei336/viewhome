@@ -6,13 +6,19 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user &.authenticate(params[:session][:password])
-      log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      flash[:success] = "ログインしました"
-      redirect_back_or user
+      if user.activated?
+        log_in user
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        redirect_back_or user
+      else
+        message  = "アカウントが認証できていません"
+        message += "メールアドレスを確認し、認証を行って下さい"
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
-      flash.now[:danger]="メールアドレスまたはパスワードが違います"
-      render 'new'
+      flash.now[:danger] = "メールアドレスまたはパスワードが違います"
+      reder 'new'
     end
   end
 

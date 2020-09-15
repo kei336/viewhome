@@ -1,0 +1,6 @@
+<%= @user.name %>様
+
+viewhomeにご登録頂きありがとうございます。本メールは、ご登録いただいたメールアドレスが正しいかどうか確認するための認証用メールアドレスです。
+認証を完了するために、下記のリンクからviewhomeにログインしてください。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

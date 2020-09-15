@@ -1,0 +1,7 @@
+<p><%= @user.name %>様</p>
+
+<p>viewhomeにご登録頂きありがとうございます。本メールは、ご登録いただいたメールアドレスが正しいかどうか確認するための認証用メールアドレスです。</p>
+<p>認証を完了するために、下記のリンクからviewhomeにログインしてください。</p>
+
+<%= link_to "認証する", edit_account_activation_url(@user.activation_token,
+                                                  email: @user.email) %>
