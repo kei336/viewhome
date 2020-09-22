@@ -7,10 +7,13 @@
         <% if @user.posts.any? %>
           <%= link_to "投稿一覧", @user, class: "posts-likes" %>
           <%= link_to "いいね一覧", "/users/#{@user.id}/likes", class: "posts-likes" %>
+          <% @likes.each do |like| %>
+            <% post = Post.find_by(id: like.post_id) %> 
           <ol class="posts">
-            <%= render @posts %>
+            <%= render post %>
           </ol>
           <%= will_paginate @posts %>
+          <% end %>
         <% end %>
     </div>
   </div>

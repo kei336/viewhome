@@ -97,3 +97,52 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+.posts {
+  list-style: none;
+}
+
+.timeline{
+  margin-bottom: 100px;
+  height: 650px;
+  width:360px;
+}
+
+.timeline-layout img{
+ margin-left: 30px;
+}
+.timeline-icon{
+  position: absolute;
+  top:650px;
+  left: 50px;
+  margin-bottom: 20px;
+}
+.timeline-name{
+  position: absolute;
+  top:650px;
+  left:120px;
+}
+.timeline-delete{
+  position: absolute;
+  top:670px;
+  left:120px;
+}
+.posts-show{
+  padding-top: 50px;
+}
+
+.like-btn{
+  color:#8899a6;
+}
+.like-btn-unlike{
+  color:#ff2581;
+}
+.posts-likes{
+  text-decoration: none;
+  font-size: 30px;
+  color: black;
+  padding-bottom: 10px;
+}
+ol{
+  margin-bottom: 0;
+}

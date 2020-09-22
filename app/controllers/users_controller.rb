@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    redirect_to root_url and return unless @user.activated?
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
   def create
@@ -44,8 +44,14 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "削減しました"
+    flash[:success] = "削除しました"
     redirect_to users_url
+  end
+
+  def likes
+    @user=User.find_by(id: params[:id])
+    @likes=Like.where(user_id: @user.id)
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
 
@@ -55,14 +61,6 @@ private
   def user_params
     params.require(:user).permit(:name, :email, :password, 
                                  :password_confirmation)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "ログインが必要です"
-      redirect_to login_url
-    end
   end
 
   def correct_user
