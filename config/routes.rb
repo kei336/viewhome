@@ -12,9 +12,15 @@ Rails.application.routes.draw do
   post  'likes/:post_id/create',  to: 'likes#create'
   post  'likes/:post_id/destroy', to: 'likes#destroy'
   get   'users/:id/likes',        to: 'users#likes'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :posts,               only: [:new, :index, :show, :create, :destroy]
+  resources :relationships,       only: [:create, :destroy]
 
 end

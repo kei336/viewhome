@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="show-follow-icon">
+        <%= gravatar_for @user %>
+      </div>
+      <div class="show-follow-name">
+        <h2><%= @user.name %></h2>
+      </div>
+      <%= render 'shared/stats' %>
+    </div>
+    <div class="col-md-8">
+      <% if @users.any? %>
+        <ul class="users follow">
+          <%= render @users %>
+        </ul>
+        <%= will_paginate %>
+      <% end %>
+    </div>
+  </div>
+</div>
