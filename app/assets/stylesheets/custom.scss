@@ -105,7 +105,7 @@ input {
 
 .timeline{
   margin-bottom: 100px;
-  height: 650px;
+  height: 620px;
   width:360px;
 }
 
@@ -114,18 +114,17 @@ input {
 }
 .timeline-icon{
   position: absolute;
-  top:650px;
   left: 50px;
   margin-bottom: 20px;
 }
 .timeline-name{
   position: absolute;
-  top:650px;
+  top:630px;
   left:120px;
 }
 .timeline-delete{
   position: absolute;
-  top:670px;
+  top:650px;
   left:120px;
 }
 .posts-show{
