@@ -10,3 +10,4 @@ ja:
         password_confirmation: パスワード(確認用)
       post:
         content: オススメポイント
+        image: ホーム画面の画像

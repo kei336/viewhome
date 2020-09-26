@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'mail-iso-2022-jp'
 gem 'aws-sdk-s3',              '1.46.0', require: false
+gem 'kaminari'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

@@ -12,6 +12,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user)
+    @comment = @post.comments.build(user_id: current_user.id) if current_user
   end
 
   def create

@@ -1,12 +1,12 @@
 <div class="posts-show" >
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="show-layout">
           <%= image_tag @post.display_image %>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <%= link_to gravatar_for(@post.user, size:50), @post.user %>
         <%= link_to @post.user.name, @post.user %>
         <div id="like-<%= @post.id%>">
@@ -16,9 +16,33 @@
         <%= @post.name %>
         <h2>オススメポイント</h2>
         <%= @post.content%>
-        <h4><%= link_to 'このアプリの情報を見る', 'https://www.apple.com/jp/search/post.name?src=globalnav' %></h4>
-
+        <h4><%= link_to 'このアプリの情報を見る', 'https://www.apple.com/jp/search/?src=globalnav' %></h4>
       </div>
+        <div class="col-md-4">
+          <% if current_user %>
+            <%= form_with(model: [@post,@comment], class: "message-form", local: true) do |form| %>
+              <%= form.text_area :text, class: "textbox", placeholder: "投稿へのコメントを入力する" %>
+              <%= form.submit "送信する", class: "form_submit"%>
+            <% end %>
+          <% else %>
+            <p>コメントするにはログインが必要です</p>
+          <% end %>
+            <% if @comments%>
+              <% @comments. each do |comment| %>
+                <div class="col-md-12">
+                <div class="border border-dark">
+                  <%= comment.user.name %>
+                  <%= comment.text %>
+                  <div class="comment-delete">
+                    <% if current_user?(comment.user) %>
+                      <%= link_to "削除", post_comment_path(@post, comment), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger btn-sm' %>
+                    <% end %>
+                  </div>
+                </div>
+                </div>
+              <% end %>
+            <% end %>
+        </div>
     </div>
   </div>
 </div>
