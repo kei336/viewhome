@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       redirect_to post_path(@post)
     else
       @post = Post.find(params[:post_id]) 
-　　　 @comments = @post.comments.includes(:user)
+      @comments = @post.comments.includes(:user)
       flash.now[:danger] = '投稿へのコメントに失敗しました。'
       render 'posts/show'
     end

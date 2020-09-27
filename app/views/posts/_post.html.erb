@@ -6,6 +6,11 @@
     <div class="timeline-icon">
       <%= link_to gravatar_for(post.user, size:50), post.user %>
     </div>
+    <div class="timeline-like">    
+      <div id="like-<%= post.id%>">
+        <%= render partial: "users/like", locals: { post: post } %>
+      </div>
+    </div>
     <div class="timeline-name">
       <%= link_to post.user.name, post.user %>
     </div>
@@ -15,6 +20,5 @@
                                         data: { confirm: "削除しますか?" } %>
       </div>
     <% end %>
-    
   </div>
 </div>
