@@ -113,19 +113,24 @@ input {
  margin-left: 30px;
 }
 .timeline-icon{
-  position: absolute;
+  position: relative;
   left: 50px;
   margin-bottom: 20px;
 }
 .timeline-name{
-  position: absolute;
+
   top:630px;
-  left:120px;
+  left:180px;
 }
 .timeline-delete{
-  position: absolute;
+
   top:650px;
-  left:120px;
+  left:180px;
+}
+.timeline-like{
+  position: absolute;
+  top:600px;
+  left:50px;
 }
 .posts-show{
   padding-top: 50px;
@@ -159,4 +164,9 @@ ol{
 .comment-delete{
   text-align: right;
 }
-
+.comment-text{
+  width: 300px;
+}
+.border{
+  border: 0px solid black;
+}

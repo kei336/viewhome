@@ -10,7 +10,7 @@
         <%= link_to gravatar_for(@post.user, size:50), @post.user %>
         <%= link_to @post.user.name, @post.user %>
         <div id="like-<%= @post.id%>">
-          <%= render "users/like" %>
+          <%= render partial: "users/like", locals: { post: @post } %>
         </div>
         <h2>オススメアプリ</h2>
         <%= @post.name %>
@@ -30,17 +30,19 @@
             <% if @comments%>
               <% @comments. each do |comment| %>
                 <div class="col-md-12">
-                <div class="border border-dark">
                   <%= comment.user.name %>
-                  <%= comment.text %>
+                  <div class="comment-text">
+                    <%= comment.text %>
+                  </div>
                   <div class="comment-delete">
                     <% if current_user?(comment.user) %>
                       <%= link_to "削除", post_comment_path(@post, comment), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger btn-sm' %>
-                    <% end %>
+                      <% end %>
                   </div>
                 </div>
-                </div>
               <% end %>
+            <% else %>
+              <p>コメントはありません</p>
             <% end %>
         </div>
     </div>
