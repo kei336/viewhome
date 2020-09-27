@@ -34,6 +34,10 @@ class PostsController < ApplicationController
     redirect_to request.referrer || posts_url
   end
 
+  def ranking
+    @posts = Post.all.sort{|a,b| b.liked_users.count <=> a.liked_users.count}
+  end
+
   private
 
     def post_params
