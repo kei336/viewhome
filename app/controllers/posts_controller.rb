@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :index, :create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user,   only: [:destroy, :edit, :update]
 
   def new
     @post = current_user.posts.build if logged_in?
@@ -25,6 +25,20 @@ class PostsController < ApplicationController
     else
       @feed_items = current_user.posts.build(post_params)
       render 'posts/new'
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+     flash[:success] = "投稿情報を更新しました"
+     redirect_to @post
+    else
+      render 'edit'
     end
   end
 

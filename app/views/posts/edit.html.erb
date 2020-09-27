@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>投稿編集</h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with(model: @post, local: true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+      <div class="field">
+        <%= f.label :name, "オススメのアプリ名" %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :content, "アプリのオススメポイント" %>
+        <%= f.text_area :content %>
+      </div>
+      <span class="image">
+        <%= f.file_field :image %>
+      </span>
+
+      <%=f.submit "投稿する", class: "btn btn-dark" %>
+      <% end %>
+    </div>
+  </div>
+</div>

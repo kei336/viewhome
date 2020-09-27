@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete  'posts/:post_id/likes',  to: 'likes#destroy'
   get     'users/:id/likes',         to: 'users#likes'
   get     'posts/ranking',         to:  'posts#ranking'
-  resources :posts,               only: [:new, :index, :show, :create, :destroy]
+  resources :posts,               only: [:new, :index, :show, :edit,:update, :create, :destroy]
   resources :users do
     member do
       get :following, :followers
