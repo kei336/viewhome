@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :correct_user, only: [:destroy]
+
+  
   
   def create
     @post = Post.find(params[:post_id])
@@ -9,10 +11,7 @@ class CommentsController < ApplicationController
       flash[:success] = "投稿にコメントしました"
       redirect_to post_path(@post)
     else
-      @post = Post.find(params[:post_id]) 
-      @comments = @post.comments.includes(:user)
-      flash.now[:danger] = '投稿へのコメントに失敗しました。'
-      render 'posts/show'
+      redirect_to post_path(@post)
     end
   end
 

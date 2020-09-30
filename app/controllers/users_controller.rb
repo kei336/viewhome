@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.paginate(page: params[:page])
+    @posts = @user.posts.paginate(page: params[:page],per_page: 12)
   end
 
   def create
@@ -50,8 +50,7 @@ class UsersController < ApplicationController
 
   def likes
     @user=User.find_by(id: params[:id])
-    @likes=Like.where(user_id: @user.id)
-    @posts = @user.posts.paginate(page: params[:page])
+    @likes=Like.where(user_id: @user.id).paginate(page: params[:page],per_page: 12)
   end
 
   def following

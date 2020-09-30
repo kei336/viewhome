@@ -9,5 +9,13 @@ ja:
         password: パスワード
         password_confirmation: パスワード(確認用)
       post:
+        name: アプリ名
         content: オススメポイント
         image: ホーム画面の画像
+  views:
+    pagination:
+      first:    "最初のページ"
+      last:     "最後のページ"
+      previous: "&lsaquo;"
+      next:     "&rsaquo;"
+      truncate: "（中略）"

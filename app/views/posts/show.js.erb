@@ -1,0 +1,3 @@
+$('#view_more').remove();
+$('#comment_lists').append("<%= escape_javascript(render 'comment_list', object: @comments) %>");
+$("#comment_lists").append("<%= escape_javascript(link_to_next_page(@comments, 'もっと見る', remote: true, id: 'view_more')) %>")

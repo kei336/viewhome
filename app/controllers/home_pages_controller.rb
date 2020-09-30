@@ -1,7 +1,6 @@
 class HomePagesController < ApplicationController
   def top
-    @post = Post.all
-    @feed_items = current_user.postall.paginate(page: params[:page]) if logged_in?
+    @posts = Post.paginate(page: params[:page], per_page: 12)
   end
 
   def about

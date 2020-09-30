@@ -1,0 +1,15 @@
+  <% @comments. each do |comment| %>
+  <div class="col-md-12">
+    <div class="comment_list">
+      <%= comment.user.name %>
+      <div class="comment-text">
+        <%= comment.text %>
+      </div>
+      <div class="comment-delete">
+        <% if current_user?(comment.user) %>
+          <%= link_to "削除", post_comment_path(@post, comment), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+      </div>      
+    </div>
+  </div>
+  <% end %>

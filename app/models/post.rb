@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
+  validates :name,    presence: true, length: { maximum:50 }
   validates :content, presence: true, length: { maximum:140 }
   validates :image,   presence:true,   
                       content_type: { in: %w[image/jpeg image/gif image/png],
@@ -18,5 +19,8 @@ class Post < ApplicationRecord
 
   def like_by?(user)
     likes.where(user_id: user_id).exist?
+  end
+  def self.sort_like
+    Post.all.sort{|a,b| b.liked_users.count <=> a.liked_users.count}
   end
 end

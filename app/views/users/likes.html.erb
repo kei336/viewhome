@@ -6,21 +6,24 @@
           <%= @user.name %>
         </div>
       </h1>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
+      <div class="user-show-menu">
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
       
-      <%= render 'follow_form' if logged_in? %>
-        <% if @user.posts.any? %>
-          <%= link_to "投稿一覧", @user, class: "posts-likes" %>
-          <%= link_to "いいね一覧", "/users/#{@user.id}/likes", class: "posts-likes" %>
-          <% @likes.each do |like| %>
+        <%= render 'follow_form' if logged_in? %>
+          <% if @user.posts.any? %>
+            <%= link_to "投稿一覧", @user, class: "posts-likes" %>
+            <%= link_to "いいね一覧", "/users/#{@user.id}/likes", class: "posts-likes" %>
+            <% @likes.each do |like| %>
             <% post = Post.find_by(id: like.post_id) %> 
-          <ol class="posts">
-            <%= render post %>
-          </ol>
-          <%= will_paginate @posts %>
+            <li class="posts">
+              <%= render post %>
+            </li>
+
+            <% end %>
           <% end %>
-        <% end %>
+              <%= will_paginate @likes %> 
+        </div>
     </div>
   </div>

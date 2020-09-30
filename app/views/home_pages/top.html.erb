@@ -6,7 +6,8 @@
       	<a class="btn btn-lg btn-primary" href="/" role="button">新着順</a>
       	<a class="btn btn-lg btn-default" href="/posts/ranking" role="button">人気順</a>
 			</div>
-    	<%= render 'shared/feed' %>
+    	<%= render @posts %>
+			<%= will_paginate @posts %>
 		</div>
 	</div>
 <% else %>

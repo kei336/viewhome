@@ -101,17 +101,26 @@ input {
 
 .posts {
   list-style: none;
+  ol{
+    margin-bottom: 240px !important;
+  }
 }
 
 .timeline{
   margin-bottom: 100px;
   height: 620px;
   width:360px;
+  text-align: center;
 }
 
 .timeline-layout img{
- margin-left: 30px;
+  margin-left:0px
+
 }
+.timeline-layout{
+  text-align: center;
+}
+
 .timeline-icon{
   position: relative;
   left: 50px;
@@ -148,9 +157,7 @@ input {
   color: black;
   padding-bottom: 10px;
 }
-ol{
-  margin-bottom: 0;
-}
+
 .show-follow-name{
   text-align: center;
 }
@@ -159,6 +166,9 @@ ol{
   text-align: center;
   padding-top: 50px;
 
+}
+.user-show-menu{
+  text-align: center;
 }
 
 .comment-delete{
@@ -173,4 +183,9 @@ ol{
 .index-btn{
   padding-bottom: 30px;
   text-align: center;
+}
+.comment_list{
+  overflow: auto;
+  padding: 10px 0;
+  border-bottom: 1px solid $gray-lighter;
 }

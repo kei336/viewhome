@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :index, :create, :destroy]
   before_action :correct_user,   only: [:destroy, :edit, :update]
+  
 
   def new
     @post = current_user.posts.build if logged_in?
   end
 
   def index
-    @feed_items = current_user.feed.paginate(page: params[:page]) if logged_in?
+    @feed_items = current_user.feed.paginate(page: params[:page],per_page: 12) if logged_in?
   end
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.includes(:user)
+    @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(5)
     @comment = @post.comments.build(user_id: current_user.id) if current_user
   end
 
@@ -49,8 +50,12 @@ class PostsController < ApplicationController
   end
 
   def ranking
-    @posts = Post.all.sort{|a,b| b.liked_users.count <=> a.liked_users.count}
+    @posts = Post.sort_like.paginate(page: params[:page],per_page: 12)
   end
+
+
+
+
 
   private
 
@@ -62,4 +67,7 @@ class PostsController < ApplicationController
       @post = current_user.posts.find_by(id: params[:id])
       redirect_to root_url if @post.nil?
     end
+
+  
+      
 end

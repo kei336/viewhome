@@ -75,9 +75,6 @@ class User < ApplicationRecord
                      OR user_id = :user_id", user_id: id)
   end
 
-  def postall
-    Post.all
-  end
 
   def follow(other_user)
     following << other_user
@@ -90,6 +87,8 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+
 
 
   private
