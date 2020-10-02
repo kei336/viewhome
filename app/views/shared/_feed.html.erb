@@ -1,5 +1,8 @@
 <% if @feed_items.any? %>
     <%= render @feed_items %>
-
-  <%= will_paginate @feed_items %>
+    <div class="col-md-12">
+      <div class="paginate">
+        <%= will_paginate @feed_items %>
+      </div>
+    </div>
 <% end %>

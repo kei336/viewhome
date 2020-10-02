@@ -282,7 +282,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   aws-sdk-s3 (= 1.46.0)
-  bcrypt
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   bootstrap-sass
   bootstrap-will_paginate
@@ -290,7 +290,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   factory_bot_rails
   faker
-  image_processing
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
   kaminari

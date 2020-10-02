@@ -1,27 +1,29 @@
 <div class="col-md-4">
-    <div class="timeline">
-
-        <%= link_to image_tag(post.display_image), post_path(post.id) %>
-
+  <div class="timeline">
+    <div class="border-img">
+      <%= link_to image_tag(post.display_image), post_path(post.id) %>
+    </div>
+    <div class="border-layout">
       <div class="timeline-icon">
         <%= link_to gravatar_for(post.user, size:50), post.user %>
+      </div>
+      <div class="timeline-name">
+        <%= link_to post.user.name, post.user %>
       </div>
       <div class="timeline-like">    
         <div id="like-<%= post.id%>">
           <%= render partial: "users/like", locals: { post: post } %>
         </div>
       </div>
-      <div class="timeline-name">
-        <%= link_to post.user.name, post.user %>
-      </div>
       <% if current_user?(post.user) %>
-        <div class="timeline-delete">
-          <%= link_to "削除", post, method: :delete,
-                                        data: { confirm: "削除しますか?" } %>
-          <%= link_to "編集", edit_post_path(post) %>
-
-        </div>
+      <div class="timeline-delete">
+        <%= link_to "削除", post, method: :delete,
+                                    data: { confirm: "削除しますか?" } %>
+      </div>
+      <div class="timeline-edit">
+        <%= link_to "編集", edit_post_path(post) %>
+      </div>
       <% end %>
     </div>
-
+  </div>
 </div>

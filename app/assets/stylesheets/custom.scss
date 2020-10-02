@@ -107,39 +107,59 @@ input {
 }
 
 .timeline{
-  margin-bottom: 100px;
-  height: 620px;
-  width:360px;
   text-align: center;
 }
 
-.timeline-layout img{
-  margin-left:0px
 
-}
 .timeline-layout{
   text-align: center;
 }
-
-.timeline-icon{
+.border-img img{
   position: relative;
-  left: 50px;
-  margin-bottom: 20px;
-}
-.timeline-name{
-
-  top:630px;
-  left:180px;
-}
-.timeline-delete{
-
-  top:650px;
-  left:180px;
+  border: 1px solid  $gray-light;
 }
 .timeline-like{
   position: absolute;
-  top:600px;
-  left:50px;
+  top:630px;
+  left: 115px;
+}
+.timeline-icon img{
+  position: absolute;
+  left:5px;
+  top:-48px;
+}
+.timeline-name a{
+  position: absolute;
+  top:-48px;
+  width:200px;
+  left:-7px;
+  font-size:20px;
+  color:black;
+  text-align: left;
+  font-family: 'Reimin Light';
+}
+.timeline-delete a{
+  position: absolute;
+  top: -47px;
+  width: 40px;
+  left: 180px;
+  color:black;
+}
+.timeline-edit a{
+  position: absolute;
+  width: 40px;
+  left:300px;
+  color: black;
+}
+
+.border-layout{
+  border: 1px solid  $gray-light;
+  margin: 0 39px;
+  height: 50px;
+  background-color: ghostwhite;
+}
+.paginate{
+  text-align: center;
 }
 .posts-show{
   padding-top: 50px;
@@ -165,7 +185,22 @@ input {
 .show-follow-icon{
   text-align: center;
   padding-top: 50px;
-
+}
+.show-name{
+  overflow: auto;
+  padding: 10px 0;
+  border-bottom: 1px solid $gray-lighter;
+}
+.show-content{
+  overflow: auto;
+  padding: 10px 0;
+  border-bottom: 1px solid $gray-lighter;
+}
+.show-layout img{
+  border: 1px solid  $gray-light;
+}
+.show-user-name a{
+  color: black;
 }
 .user-show-menu{
   text-align: center;
@@ -177,9 +212,7 @@ input {
 .comment-text{
   width: 300px;
 }
-.border{
-  border: 0px solid black;
-}
+
 .index-btn{
   padding-bottom: 30px;
   text-align: center;

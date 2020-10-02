@@ -8,14 +8,20 @@
       </div>
       <div class="col-md-4">
         <%= link_to gravatar_for(@post.user, size:50), @post.user %>
-        <%= link_to @post.user.name, @post.user %>
+        <div class="show-user-name">
+          <%= link_to @post.user.name, @post.user %>
+        </div>
         <div id="like-<%= @post.id%>">
           <%= render partial: "users/like", locals: { post: @post } %>
         </div>
-        <h2>オススメアプリ</h2>
-        <%= @post.name %>
-        <h2>オススメポイント</h2>
-        <%= @post.content%>
+        <div class="show-name">
+          <h2>オススメアプリ</h2>
+          <%= @post.name %>
+        </div>
+        <div class="show-content">
+          <h2>オススメポイント</h2>
+          <%= @post.content%>
+        </div>
         <h4><%= link_to 'このアプリの情報を見る', 'https://www.apple.com/jp/search/?src=globalnav' %></h4>
       </div>
       <div class="col-md-4">

@@ -17,7 +17,11 @@
             <li class="posts">
               <%= render @posts %>
             </li>
-            <%= will_paginate @posts %>
+            <div class="col-md-12">
+              <div class="paginate">
+                <%= will_paginate @posts %>
+              </div>
+            </div>
           <% end %>
         </div>
     </div>

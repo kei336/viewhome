@@ -20,10 +20,11 @@
             <li class="posts">
               <%= render post %>
             </li>
-
             <% end %>
           <% end %>
-              <%= will_paginate @likes %> 
+            <div class="col-md-12">
+              <%= will_paginate @likes %>
+            </div> 
         </div>
     </div>
   </div>

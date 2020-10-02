@@ -7,7 +7,11 @@
       	<a class="btn btn-lg btn-default" href="/posts/ranking" role="button">人気順</a>
 			</div>
     	<%= render @posts %>
-			<%= will_paginate @posts %>
+			<div class="col-md-12">
+				<div class="paginate">
+					<%= will_paginate @posts %>
+				</div>
+			</div>
 		</div>
 	</div>
 <% else %>

@@ -14,7 +14,7 @@ class Post < ApplicationRecord
                       size:         { less_than: 5.megabytes,
                                       message: "5MB未満である必要があります" }
   def display_image
-    image.variant(resize_to_limit:[500,600])
+    image.variant(resize_to_fill:[280,600])
   end
 
   def like_by?(user)
