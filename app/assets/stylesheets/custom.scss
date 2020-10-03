@@ -6,8 +6,11 @@ h1{
   padding-top:70px;
   padding-bottom:20px;
   font-size:50px;
+  color: black;
 }
-
+body * a{
+  color:black;
+}
 
 .main{
   background-image:  image-url('q2.jpg');
@@ -127,7 +130,7 @@ input {
 .timeline-icon img{
   position: absolute;
   left:5px;
-  top:-48px;
+  top:-46px;
 }
 .timeline-name a{
   position: absolute;
@@ -154,7 +157,7 @@ input {
 .border-layout{
   border: 1px solid  $gray-light;
   margin: 0 39px;
-  height: 50px;
+  height: 54px;
   background-color: ghostwhite;
 }
 .paginate{
@@ -220,4 +223,7 @@ input {
   overflow: auto;
   padding: 10px 0;
   border-bottom: 1px solid $gray-lighter;
+}
+.icon img{
+  border: 1px solid  $gray-light; 
 }

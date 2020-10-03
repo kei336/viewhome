@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :icon
   has_many :likes,    dependent: :destroy
   has_many :liked_posts, through: :likes, source: :user
   has_many :posts,    dependent: :destroy
@@ -86,6 +87,10 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def icon_image
+    icon.variant(resize_to_fill: [50,50])
   end
 
 

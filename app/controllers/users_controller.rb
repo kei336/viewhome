@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.icon.attach(params[:user][:icon])
     if @user.save
       @user.send_activation_email
       flash[:info] = "メールアドレスを確認し、ログインしてください"
@@ -70,7 +71,7 @@ private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, 
-                                 :password_confirmation)
+                                 :password_confirmation,:icon)
   end
 
   def correct_user
