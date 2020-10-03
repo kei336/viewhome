@@ -24,6 +24,7 @@ h1{
 .navbar{
   opacity:0.9;
 }
+
 .photo-content img{
   height: 550px;
   width:auto;
@@ -140,15 +141,13 @@ input {
 }
 .timeline-delete a{
   position: absolute;
-  top: -47px;
+  top: -40px;
   width: 40px;
-  left: 180px;
+  left: 25px;
   color:black;
 }
 .timeline-edit a{
-  position: absolute;
-  width: 40px;
-  left:300px;
+
   color: black;
 }
 

@@ -22,22 +22,27 @@
           <h2>オススメポイント</h2>
           <%= @post.content%>
         </div>
-        <h4><%= link_to 'このアプリの情報を見る', 'https://www.apple.com/jp/search/?src=globalnav' %></h4>
-      </div>
-      <div class="col-md-4">
-        <% if current_user %>
-          <%= form_with(model: [@post,@comment], class: "message-form", local: true) do |form| %>
-            <%= form.text_area :text, class: "textbox", placeholder: "投稿へのコメントを入力する" %>
-            <%= form.submit "送信する", class: "form_submit"%>
-          <% end %>
-        <% else %>
-          <p>コメントするにはログインが必要です</p>
-        <% end %>
-        <div id="comment_lists">
-          <%= render 'comment_list' %>
+        <h4><a href="https://www.apple.com/jp/search/<%= @post.name %>?src=globalnav", target="_blank", rel="noopener">アプリの情報を見る</a></h4>
+        <% if current_user?(@post.user) %>
+        <div class="timeline-edit">
+          <%= link_to "編集する", edit_post_path(@post) %>
         </div>
-        <div class="more">
-          <%= link_to_next_page @comments, 'もっと見る', remote: true, id: 'view_more' %>
+        <% end %>
+        </div>
+        <div class="col-md-4">
+          <% if current_user %>
+            <%= form_with(model: [@post,@comment], class: "message-form", local: true) do |form| %>
+              <%= form.text_area :text, class: "textbox", placeholder: "投稿へのコメントを入力する" %>
+              <%= form.submit "送信する", class: "form_submit"%>
+            <% end %>
+          <% else %>
+            <p>コメントするにはログインが必要です</p>
+          <% end %>
+          <div id="comment_lists">
+            <%= render 'comment_list' %>
+          </div>
+          <div class="more">
+            <%= link_to_next_page @comments, 'もっと見る', remote: true, id: 'view_more' %>
         </div>
       </div>
     </div>
