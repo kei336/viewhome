@@ -1,9 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@media(max-width:1000px){
+@media(max-width:670px){
   .main{
-    height:1750px ;
+    font-size: 1px;
   }
 }
 
@@ -29,6 +29,14 @@ body * a{
   font-size: 20px;
   opacity:0.7;
 }
+.main-logo{
+  font-size:20px;
+  font-weight: bold;
+  padding-top:10px;
+  font-family: Courier;
+  text-decoration:none;
+}
+
 .about{
   background-color: darkgray;
 }
