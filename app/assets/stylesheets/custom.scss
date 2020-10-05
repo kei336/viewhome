@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@media(max-width:1000px){
+  .main{
+    height:1750px ;
+  }
+}
+
 h1{
   text-align:center;
   padding-top:70px;
@@ -15,14 +21,16 @@ body * a{
 .main{
   background-image:  image-url('q2.jpg');
   background-size: cover;
-  margin:auto;
   height:750px ;
-
+  margin: auto;
 }
 .main-content{
   padding-top:300px;
   font-size: 20px;
   opacity:0.7;
+}
+.about{
+  background-color: darkgray;
 }
 .navbar{
   opacity:0.9;
@@ -31,6 +39,8 @@ body * a{
 .photo-content img{
   height: 550px;
   width:auto;
+  padding-top: 10px;
+  padding-left:20px ;
 }
 
 .content-many{
