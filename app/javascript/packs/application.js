@@ -18,6 +18,8 @@ require("jquery")
 // const imagePath = (name) => images(name, true)
 
 
+//= require rails-ujs
+//= require turbolinks
 //= require jquery
 //= require rails-ujs
 //= require_tree .
