@@ -1,11 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@media(max-width:670px){
-  .main{
-    font-size: 1px;
-  }
-}
 
 h1{
   text-align:center;
@@ -19,8 +14,9 @@ body * a{
 }
 
 .main{
-  background-image:  image-url('q2.jpg');
+  background-image:image-url('q1.jpg');
   background-size: cover;
+  background-position: 50%;
   height:750px ;
   margin: auto;
 }
