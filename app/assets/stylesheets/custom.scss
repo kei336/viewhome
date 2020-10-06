@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@media (max-width: 991px){
+  .post-layout{
+    text-align: center;
+  }
+}
 
 h1{
   text-align:center;
@@ -131,26 +136,26 @@ input {
 
 .timeline-layout{
   text-align: center;
-}
-.border-img img{
   position: relative;
+}
+
+.border-img img{
   border: 1px solid  $gray-light;
 }
 .timeline-like{
   position: absolute;
-  top:630px;
-  left: 115px;
+  top:25px;
+  left: 55px;
 }
 .timeline-icon img{
   position: absolute;
-  left:5px;
-  top:-46px;
+  left: 0px;
 }
 .timeline-name a{
   position: absolute;
-  top:-48px;
+  top:3px;
   width:200px;
-  left:-7px;
+  left:55px;
   font-size:20px;
   color:black;
   text-align: left;
@@ -158,13 +163,12 @@ input {
 }
 .timeline-delete a{
   position: absolute;
-  top: -40px;
+  top: 4px;
   width: 40px;
-  left: 25px;
+  left: 245px;
   color:black;
 }
 .timeline-edit a{
-
   color: black;
 }
 
@@ -180,7 +184,9 @@ input {
 .posts-show{
   padding-top: 50px;
 }
-
+.post-layout{
+  text-align: -webkit-center;
+}
 .like-btn{
   color:#8899a6;
 }
@@ -212,8 +218,11 @@ input {
   padding: 10px 0;
   border-bottom: 1px solid $gray-lighter;
 }
-.show-layout img{
+.post-layout img{
   border: 1px solid  $gray-light;
+}
+.show-layout{
+  text-align: center;
 }
 .show-user-name a{
   color: black;

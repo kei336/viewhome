@@ -111,21 +111,34 @@ input {
 .timeline-layout img{
  margin-left: 30px;
 }
-.timeline-icon{
-  position: absolute;
-  top:650px;
-  left: 50px;
-  margin-bottom: 20px;
+.border-layout{
+  position: relative;
 }
-.timeline-name{
+.timeline-like{
   position: absolute;
-  top:650px;
-  left:120px;
+  top:25px;
+  left: 55px;
 }
-.timeline-delete{
+.timeline-icon img{
   position: absolute;
-  top:670px;
-  left:120px;
+  left: 0px;
+}
+.timeline-name a{
+  position: absolute;
+  top:3px;
+  width:200px;
+  left:55px;
+  font-size:20px;
+  color:black;
+  text-align: left;
+  font-family: 'Reimin Light';
+}
+.timeline-delete a{
+  position: absolute;
+  top: 4px;
+  width: 40px;
+  left: 245px;
+  color:black;
 }
 .posts-show{
   padding-top: 50px;

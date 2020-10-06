@@ -1,30 +1,32 @@
-<div class="col-md-4">
-  <div class="timeline">
-    <div class="border-img">
-      <%= link_to image_tag(post.display_image), post_path(post.id) %>
-    </div>
-    <div class="border-layout">
-      <div class="timeline-icon icon">
-        <% if post.user.icon.attached? %>
-          <%= image_tag post.user.icon_image %>
-        <% else %>
-          <%= image_tag("default_user.jpg", size: 50)%>
+<div class="post-layout">
+  <div class="col-md-4">
+    <div class="timeline">
+      <div class="border-img">
+        <%= link_to image_tag(post.display_image), post_path(post.id) %>
+      </div>
+      <div class="border-layout">
+        <div class="timeline-icon icon">
+          <% if post.user.icon.attached? %>
+            <%= image_tag post.user.icon_image %>
+          <% else %>
+            <%= image_tag("default_user.jpg", size: 50)%>
+          <% end %>
+        </div>
+        <div class="timeline-name">
+          <%= link_to post.user.name, post.user %>
+        </div>
+        <div class="timeline-like">    
+          <div id="like-<%= post.id%>">
+            <%= render partial: "users/like", locals: { post: post } %>
+          </div>
+        </div>
+        <% if current_user?(post.user) %>
+        <div class="timeline-delete">
+          <%= link_to "削除", post, method: :delete,
+                                      data: { confirm: "削除しますか?" } %>
+        </div>
         <% end %>
       </div>
-      <div class="timeline-name">
-        <%= link_to post.user.name, post.user %>
-      </div>
-      <div class="timeline-like">    
-        <div id="like-<%= post.id%>">
-          <%= render partial: "users/like", locals: { post: post } %>
-        </div>
-      </div>
-      <% if current_user?(post.user) %>
-      <div class="timeline-delete">
-        <%= link_to "削除", post, method: :delete,
-                                    data: { confirm: "削除しますか?" } %>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>

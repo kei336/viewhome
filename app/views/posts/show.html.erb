@@ -2,11 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="show-layout">
+        <div class="post-layout">
           <%= image_tag @post.display_image %>
         </div>
       </div>
       <div class="col-md-4">
+      <div class="show-layout">
         <div class="icon">
           <% if @post.user.icon.attached? %>
             <%= image_tag @post.user.icon_image %>
@@ -20,6 +21,7 @@
         <div id="like-<%= @post.id%>">
           <%= render partial: "users/like", locals: { post: @post } %>
         </div>
+      </div>
         <div class="show-name">
           <h2>オススメアプリ</h2>
           <%= @post.name %>
