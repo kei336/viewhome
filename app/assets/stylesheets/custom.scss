@@ -45,13 +45,24 @@ body * a{
   opacity:0.9;
 }
 
-.photo-content img{
-  height: 550px;
-  width:auto;
-  padding-top: 10px;
-  padding-left:20px ;
+.photo-content{
+  text-align: -webkit-center;
+  img{
+    height: 550px;
+    width:auto;
+    padding-top: 10px;
+    padding-left:20px ;
+  }
 }
-
+.photo-about{
+  text-align: -webkit-center;
+  img{
+    height: auto;
+    width:300px;
+    padding-top: 10px;
+    padding-left:20px ;
+  }
+}
 .content-many{
   padding-top:40px;
 }
