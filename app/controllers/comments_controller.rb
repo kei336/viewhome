@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :correct_user, only: [:destroy]
+  before_action :check_guest
 
   
   

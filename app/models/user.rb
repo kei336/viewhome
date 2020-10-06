@@ -93,6 +93,12 @@ class User < ApplicationRecord
     icon.variant(resize_to_fill: [50,50])
   end
 
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザー',email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
 
 
 

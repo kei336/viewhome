@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :index, :create, :destroy]
   before_action :correct_user,   only: [:destroy, :edit, :update]
-  
+  before_action :check_guest,    only: [:new, :index, :create, :update, :edit, :destroy]
 
   def new
     @post = current_user.posts.build if logged_in?

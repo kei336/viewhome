@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+    
+    def check_guest
+      if current_user.email == 'guest@example.com'
+        flash[:danger] = 'ゲストユーザーの為制限されています'
+        redirect_to request.referrer
+      end
+    end
 end
