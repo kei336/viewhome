@@ -1,7 +1,11 @@
 FactoryBot.define do
   factory :post do
-    name { "MyString" }
-    content { "MyText" }
-    user { nil }
+    name            { 'テスト' }
+    content         { 'テスト' }
+    trait :post_image do
+      image {
+        fixture_file_upload("app/assets/images/IMG_7226.PNG")
+      }
+    end
   end
 end

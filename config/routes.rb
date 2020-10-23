@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get    '/login',                 to: 'sessions#new'
   post   '/login',                 to: 'sessions#create'
   delete '/logout',                to: 'sessions#destroy'
-  post    'posts/:post_id/likes',  to: 'likes#create'
-  delete  'posts/:post_id/likes',  to: 'likes#destroy'
+
   get     'users/:id/likes',       to: 'users#likes'
   post    'users/guest_sign_in',  to: 'users#new_guest' 
   get     'posts/ranking',         to: 'posts#ranking'
@@ -22,6 +21,9 @@ Rails.application.routes.draw do
   end
   resources :posts, only: [:create, :destroy, :show] do
     resources :comments, only: [:create, :destroy]
+  end
+  resources :posts, only: [:create, :destroy,:index, :show] do
+    resources :likes, only: [:create, :destroy]
   end
   resources :users
   resources :account_activations, only: [:edit]

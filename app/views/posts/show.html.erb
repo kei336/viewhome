@@ -39,9 +39,9 @@
         </div>
         <div class="col-md-4">
           <% if current_user %>
-            <%= form_with(model: [@post,@comment], class: "message-form", local: true) do |form| %>
-              <%= form.text_area :text, class: "textbox", placeholder: "投稿へのコメントを入力する" %>
-              <%= form.submit "送信する", class: "form_submit"%>
+            <%= form_with(model: [@post,@comment], class: "message-form", local: true) do |f| %>
+              <%= f.text_area :text, class: "textbox", placeholder: "投稿へのコメントを入力する" %>
+              <%= f.submit "送信する", class: "form_submit"%>
             <% end %>
           <% else %>
             <p>コメントするにはログインが必要です</p>
