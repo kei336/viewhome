@@ -5,7 +5,7 @@ RSpec.describe "Comments", type: :request do
   let(:other_user) { FactoryBot.create(:user, email: "otheruser@example.com") }
   let(:guest_user) { FactoryBot.create(:user, email: "guest@example.com") }
   let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
-  let!(:text) { FactoryBot.create(:comment, post: post_image, user: user) }
+  let(:text) { FactoryBot.create(:comment, post: post_image, user: user) }
   
   describe "#create" do
 

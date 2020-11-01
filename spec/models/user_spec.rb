@@ -91,6 +91,7 @@ RSpec.describe User, type: :model do
 
   # フォローしていないユーザーの投稿は表示されない
   it "is posts from unfollowed users are not displayed" do
+    FactoryBot.create(user: other_user)
     FactoryBot.create(:post, :post_image, user: other_user)
     other_user.posts.each do |unfollowed|
       expect(user.feed).to_not include(unfollowed)

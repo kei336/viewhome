@@ -46,7 +46,7 @@ RSpec.describe "Relationships", type: :request do
         sign_in_as user
         user.follow(other_user)
         expect{
-          delete relationship_path(user.id), xhr: true
+          delete relationship_path(other_user), xhr: true
         }.to change(user.following, :count).by(-1)
       end
     end

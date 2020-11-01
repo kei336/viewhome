@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Posts", type: :request do
   let(:user) { FactoryBot.create(:user) }
-  let(:other_user) { FactoryBot.create(:user, email: "other_user@example.com") }
+  let(:other_user) { FactoryBot.create(:user, email: "otherm_user@example.com") }
   let(:guest_user) { FactoryBot.create(:user, email: "guest@example.com") }
-  let!(:post_image) { FactoryBot.create(:post,:post_image, user: user) }
+  let(:post_image) { FactoryBot.create(:post,:post_image, user: user) }
 
 
   describe "#create" do
@@ -23,7 +23,8 @@ RSpec.describe "Posts", type: :request do
     context "as an guest user" do
       # 投稿できないこと
       it "is can't post" do
-        sign_in_as guest_user
+        FactoryBot.create(:user, email: "guest@example.com")
+        sign_in_as user
         expect{
           post posts_path, params: { post: post_image }
         }.to_not change(Post, :count)
