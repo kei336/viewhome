@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Edit", type: :system do
-  let(:user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:user) }
 
   # 編集に成功する
   it "successful edit" do
     valid_login(user)
-    visit user_path(user)
-    click_link "ユーザー編集"
+    visit edit_user_path(user)
 
     fill_in "名前", with: "edit"
     fill_in "メールアドレス", with: "edit_test@example.com"

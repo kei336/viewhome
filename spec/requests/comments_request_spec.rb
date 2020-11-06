@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Comments", type: :request do
-  let(:user) { FactoryBot.create(:user) }
-  let(:other_user) { FactoryBot.create(:user, email: "otheruser@example.com") }
-  let(:guest_user) { FactoryBot.create(:user, email: "guest@example.com") }
+  let!(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:user) }
+  let(:guest_user) { FactoryBot.create(:user) }
   let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
   let(:text) { FactoryBot.create(:comment, post: post_image, user: user) }
   
@@ -26,7 +26,7 @@ RSpec.describe "Comments", type: :request do
       it "is can't comment on a post" do
         sign_in_as guest_user
         expect {
-          post post_comments_path(post_image), params: {comment: {text: text}, user_id: guest_user.id, post_id: post_image.id }
+          post post_comments_path(post_image), params: {comment: {text: text}, user: guest_user, post_id: post_image.id }
         }.to_not change(Comment, :count)
       end
     end
@@ -45,7 +45,5 @@ RSpec.describe "Comments", type: :request do
       end
     end
   end
-
-
 end
 

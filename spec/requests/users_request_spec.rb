@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
   let!(:user) { FactoryBot.create(:user, admin: true) }
-  let!(:other_user) { FactoryBot.create(:user, email:"other@example.com") }
+  let(:other_user) { FactoryBot.create(:user, email:"other@example.com") }
   let(:guest_user) { FactoryBot.create(:user, email: "guest@example.com") }
-  let(:post_image) { FactoryBot.create(:post, user: user) }
+
 
   describe "GET /new" do
     it "returns http success" do
@@ -199,7 +199,7 @@ RSpec.describe "Users", type: :request do
         post = FactoryBot.create(:post,:post_image,user: other_user)
         sign_in_as user
         expect {
-          delete user_path(other_user), params: { id: user.id }
+          delete user_path(other_user), params: { id: other_user.id }
         }.to change(Post, :count).by(-1)
       end
     end

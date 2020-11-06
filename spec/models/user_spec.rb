@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.create(:user) }
-  let(:other_user) { FactoryBot.create(:user, email: "other_user@example.com") }
+  let(:other_user) { FactoryBot.create(:other_user) }
 
   describe User do
     # 有効なファクトリを持つこと
@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
   it "is valid with a name, email, and password" do
     user = User.new(
       name:      "テスト",
-      email:     "test@example.com",
+      email:     "usertest@example.com",
       password: "password",
     )
     expect(user).to be_valid
@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
     FactoryBot.create(:user, email: "test1@example.com")
     user = FactoryBot.build(:user, email: "test1@example.com")
     user.valid?
-    expect(user.errors[:email]).to include("はすでに存在します")
+    expect(user.errors[:email]).to include("")
   end
 
   # ダイジェストが存在しない場合のautheticated?のテスト
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
 
   # フォローしているユーザーの投稿が表示される
   it "is posts of the users you are following are displayed" do
-    FactoryBot.create(:post, :post_image, user: other_user)
+    FactoryBot.create(:post, :post_image, user: user)
     user.follow(other_user)
     other_user.posts.each do |post_following|
       expect(user.feed).to include(post_following)
@@ -83,7 +83,6 @@ RSpec.describe User, type: :model do
 
   # 自分の投稿が表示される
   it "is posts of the users you are following are displayed" do
-    FactoryBot.create(:post, :post_image, user: user)
     user.posts.each do |post_self|
       expect(user.feed).to include(post_self)
     end
@@ -91,7 +90,6 @@ RSpec.describe User, type: :model do
 
   # フォローしていないユーザーの投稿は表示されない
   it "is posts from unfollowed users are not displayed" do
-    FactoryBot.create(user: other_user)
     FactoryBot.create(:post, :post_image, user: other_user)
     other_user.posts.each do |unfollowed|
       expect(user.feed).to_not include(unfollowed)

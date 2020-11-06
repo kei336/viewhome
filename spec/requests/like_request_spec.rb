@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Like", type: :request do
-  let(:user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:user, email: "guest@example.com") }
-  let!(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
+  let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
 
 
 
@@ -13,7 +13,7 @@ RSpec.describe "Like", type: :request do
       # 正常なレスポンスを返すこと
       it "responds successfully" do
         sign_in_as user
-        post post_likes_path(post_image),xhr: true
+        post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } }
         expect(response).to be_successful
         expect(response).to have_http_status "200"
       end
