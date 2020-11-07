@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :post do
+    user
     name            { 'テスト' }
     content         { 'テスト' }
     trait :post_image do

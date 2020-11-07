@@ -21,7 +21,7 @@ RSpec.describe "Like", type: :request do
       it "is can like posts" do
         sign_in_as user
         expect{
-          post post_likes_path(post_image),xhr: true
+          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } },xhr: true
         }.to change(Like, :count).by(1)
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe "Like", type: :request do
       #ログイン画面にリダイレクトすること
       it "is redirects to the login page" do
         expect {
-          post post_likes_path(post_image),xhr: true
+          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } },xhr: true
         }.to_not change(Like, :count)
         expect(response).to redirect_to login_path
       end
@@ -43,7 +43,7 @@ RSpec.describe "Like", type: :request do
       it "is can like posts" do
         sign_in_as guest_user
         expect{
-          post post_likes_path(post_image),xhr: true
+          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } },xhr: true
         }.to_not change(Like, :count)
       end
     end

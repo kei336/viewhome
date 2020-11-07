@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Comment", type: :system do
-  let!(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:user, email: "otheruser@example.com") }
-  let!(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
+  let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
 
 
   # 無効な情報では送信できない

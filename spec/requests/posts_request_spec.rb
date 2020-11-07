@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Posts", type: :request do
-  let(:user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:other_user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:post_image) { FactoryBot.create(:post,:post_image, user: user) }
+  let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
 
 
   describe "#create" do
@@ -46,7 +46,7 @@ RSpec.describe "Posts", type: :request do
       # ログイン画面にリダイレクトすること
       it "is redirects to the login page" do
         expect {
-          delete post_path(post_image),params: {post: { name: "テスト", content: "テスト", user_id: user.id } }
+          delete post_path(post_image),params: { id: post_image.id, user_id: user.id}
         }.to_not change(Post, :count)
         expect(response).to redirect_to login_path
       end
@@ -58,7 +58,7 @@ RSpec.describe "Posts", type: :request do
       it "is redirects to the root page" do
         sign_in_as other_user
         expect {
-          delete post_path(post_image),params: {post: { name: "テスト", content: "テスト", user_id: user.id } }
+          delete post_path(post_image),params: {id: post_image.id, user_id: user.id}
         }.to_not change(Post, :count)
         expect(response).to redirect_to root_path
       end

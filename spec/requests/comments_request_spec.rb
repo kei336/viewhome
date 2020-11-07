@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Comments", type: :request do
-  let!(:user) { FactoryBot.create(:user) }
-  let(:other_user) { FactoryBot.create(:user) }
-  let(:guest_user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:other_user) }
+  let(:guest_user) { FactoryBot.create(:guest_user) }
   let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
-  let(:text) { FactoryBot.create(:comment, post: post_image, user: user) }
+  
   
   describe "#create" do
 
@@ -14,7 +14,7 @@ RSpec.describe "Comments", type: :request do
       # 正常なレスポンスを返すこと
       it "responds successfully" do
         sign_in_as user
-        post post_comments_path(post_image), params: {comment: {text: text}, user_id: user.id, post_id: post_image.id },xhr: true
+        post post_comments_path(post_image), params: {comment: {text: "テスト"}, user_id: user.id, post_id: post_image.id }
         expect(response).to be_successful
         expect(response).to have_http_status "200"
       end
@@ -26,7 +26,7 @@ RSpec.describe "Comments", type: :request do
       it "is can't comment on a post" do
         sign_in_as guest_user
         expect {
-          post post_comments_path(post_image), params: {comment: {text: text}, user: guest_user, post_id: post_image.id }
+          post post_comments_path(post_image), params: {comment: {text: "テスト"}, user_id: guest_user.id, post_id: post_image.id }
         }.to_not change(Comment, :count)
       end
     end
@@ -40,7 +40,7 @@ RSpec.describe "Comments", type: :request do
       it "is can't delete comment" do
         sign_in_as other_user
         expect{
-          delete post_comment_path(post_image.id,text)
+          delete post_comment_path(post_image.id)
         }.to_not change(Comment, :count)
       end
     end
