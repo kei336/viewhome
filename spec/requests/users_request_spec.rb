@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  let!(:user) { FactoryBot.create(:user, admin: true) }
-  let(:other_user) { FactoryBot.create(:user, email:"other@example.com") }
+  let!(:other_user) { FactoryBot.create(:user, email:"other@example.com") }
   let(:guest_user) { FactoryBot.create(:user, email: "guest@example.com") }
 
 
@@ -54,6 +53,7 @@ RSpec.describe "Users", type: :request do
     
 
   describe "GET #show" do
+    let!(:user) { FactoryBot.create(:user, admin: true) }
     # ログイン済のユーザー
     context "as an authenticated user" do
       # 正常なレスポンスを返すこと
@@ -75,6 +75,7 @@ RSpec.describe "Users", type: :request do
   end
   
   describe "#edit" do
+    let!(:user) { FactoryBot.create(:user) }
     # 認証されたユーザー
     context "as an authorized user" do
       it "responds successfully" do
@@ -117,6 +118,7 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "#update" do
+    let!(:user) { FactoryBot.create(:user, admin: true) }
     # 認可されたユーザー
     context "as an authorized user" do
       # ユーザーを更新できること
@@ -157,7 +159,7 @@ RSpec.describe "Users", type: :request do
         user_params = FactoryBot.attributes_for(:user, name: "NewName")
         sign_in_as other_user
         patch user_path(user), params: { id: user.id, user: user_params }
-        expect(user.reload.name).to eq other_user.name
+        expect(user.reload.name).to eq user.name
       end
 
       # ホーム画面にリダイレクトすること
@@ -173,17 +175,19 @@ RSpec.describe "Users", type: :request do
   describe "#destroy" do
     # 認可されたユーザー
     context "as an authotized user" do
+      let!(:user) { FactoryBot.create(:user, admin: true) }
       # ユーザーを削除できること
       it "deletes a user" do
         sign_in_as user
         expect {
-          delete user_path(other_user), params: { id: user.id }
+          delete user_path(other_user), params: { id: other_user.id }
         }.to change(User, :count).by(-1)
       end
     end
     
     # 認可されていないユーザー
     context "as a not authotized user" do
+      let!(:user) { FactoryBot.create(:user) }
       # 削除できないこと
       it "not delete a user" do
         sign_in_as other_user
@@ -194,9 +198,10 @@ RSpec.describe "Users", type: :request do
     end
 
     context "if the user is deleted" do
+      let!(:user) { FactoryBot.create(:user,admin: true) }
+      let!(:post_image) { FactoryBot.create(:post, :post_image, user: other_user) }
       # ユーザーが削除されると関連するポストが削除されること
       it "associated posts should be destroyed" do
-        post = FactoryBot.create(:post,:post_image,user: other_user)
         sign_in_as user
         expect {
           delete user_path(other_user), params: { id: other_user.id }

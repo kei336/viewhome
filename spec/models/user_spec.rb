@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
     FactoryBot.create(:user, email: "test1@example.com")
     user = FactoryBot.build(:user, email: "test1@example.com")
     user.valid?
-    expect(user.errors[:email]).to include("")
+    expect(user.errors[:email]).to include("はすでに存在します")
   end
 
   # ダイジェストが存在しない場合のautheticated?のテスト
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
 
   # フォローしているユーザーの投稿が表示される
   it "is posts of the users you are following are displayed" do
-    FactoryBot.create(:post, :post_image, user: user)
+    FactoryBot.create(:post, :post_image)
     user.follow(other_user)
     other_user.posts.each do |post_following|
       expect(user.feed).to include(post_following)
@@ -90,7 +90,7 @@ RSpec.describe User, type: :model do
 
   # フォローしていないユーザーの投稿は表示されない
   it "is posts from unfollowed users are not displayed" do
-    FactoryBot.create(:post, :post_image, user: other_user)
+    FactoryBot.create(:post, :post_image)
     other_user.posts.each do |unfollowed|
       expect(user.feed).to_not include(unfollowed)
     end

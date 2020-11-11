@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :post do
-    user
+    association :user, factory: :user
+    user_id         { user.id }
     name            { 'テスト' }
     content         { 'テスト' }
     trait :post_image do

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "PostInterface", type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:other_user) }
-  let(:post) { FactoryBot.create(:post, :post_image, user: user) }
-  #let(:post) { FactoryBot.create(:post,:post_image, user: other_user) }
+  let(:post) { FactoryBot.build(:post, :post_image, user: user) }
+
 
   # 無効な情報では投稿できない
   it "doesn't post with invalid information" do

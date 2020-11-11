@@ -4,7 +4,7 @@ RSpec.describe "Posts", type: :request do
   let!(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:other_user) }
   let(:guest_user) { FactoryBot.create(:guest_user) }
-  let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
+  
 
 
   describe "#create" do
@@ -13,7 +13,7 @@ RSpec.describe "Posts", type: :request do
       # 正常なレスポンスを返すこと
       it "responds successfully" do
         sign_in_as user
-          post posts_path, params: {post: { name: "テスト", content: "テスト", user_id: user.id } }
+        post posts_path, params: {post: { name: "テスト", content: "テスト", user_id: user.id } }
         expect(response).to be_successful
         expect(response).to have_http_status "200"
       end
@@ -41,8 +41,9 @@ RSpec.describe "Posts", type: :request do
   end
 
   describe "#destroy" do
+    let!(:post_image) { FactoryBot.create(:post, :post_image) }
     # ログインしていないユーザー
-    context "as a not authenticated user" do
+    context "as a not authenticated user" do    
       # ログイン画面にリダイレクトすること
       it "is redirects to the login page" do
         expect {
@@ -53,9 +54,9 @@ RSpec.describe "Posts", type: :request do
     end
     
     # アカウントが違うユーザー
-    context "as other user" do
+    context "as other user" do      
       # ホーム画面にリダイレクトすること
-      it "is redirects to the root page" do
+      it "is redirects to the root page" do  
         sign_in_as other_user
         expect {
           delete post_path(post_image),params: {id: post_image.id, user_id: user.id}

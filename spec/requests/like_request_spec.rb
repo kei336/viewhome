@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Like", type: :request do
   let!(:user) { FactoryBot.create(:user) }
   let(:guest_user) { FactoryBot.create(:user, email: "guest@example.com") }
-  let(:post_image) { FactoryBot.create(:post, :post_image, user: user) }
+  let(:post_image) { FactoryBot.create(:post, :post_image, user_id: user.id) }
 
 
 
@@ -13,7 +13,7 @@ RSpec.describe "Like", type: :request do
       # 正常なレスポンスを返すこと
       it "responds successfully" do
         sign_in_as user
-        post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } }
+        post post_likes_path(post_image),params:  { user_id: user.id, post_id: post_image.id },xhr: true
         expect(response).to be_successful
         expect(response).to have_http_status "200"
       end
@@ -21,7 +21,7 @@ RSpec.describe "Like", type: :request do
       it "is can like posts" do
         sign_in_as user
         expect{
-          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } },xhr: true
+          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post_image.id } },xhr: true
         }.to change(Like, :count).by(1)
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe "Like", type: :request do
       #ログイン画面にリダイレクトすること
       it "is redirects to the login page" do
         expect {
-          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } },xhr: true
+          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post_image.id } },xhr: true
         }.to_not change(Like, :count)
         expect(response).to redirect_to login_path
       end
@@ -43,7 +43,7 @@ RSpec.describe "Like", type: :request do
       it "is can like posts" do
         sign_in_as guest_user
         expect{
-          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post.id } },xhr: true
+          post post_likes_path(post_image),params: {post: { user_id: user.id, post_id: post_image.id } },xhr: true
         }.to_not change(Like, :count)
       end
     end
