@@ -265,3 +265,14 @@ input {
 .icon img{
   border: 1px solid  $gray-light; 
 }
+
+.card{
+  text-align: center;
+  margin-bottom: 10px;
+  height: 150px;
+}
+
+.card-content{
+  padding-bottom: 45px;
+  text-align: center;
+}

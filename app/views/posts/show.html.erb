@@ -30,7 +30,6 @@
           <h2>オススメポイント</h2>
           <%= @post.content%>
         </div>
-        <h4><a href="https://www.apple.com/jp/search/<%= @post.name %>?src=globalnav", target="_blank", rel="noopener">アプリの情報を見る</a></h4>
         <% if current_user?(@post.user) %>
         <div class="timeline-edit">
           <%= link_to "編集する", edit_post_path(@post) %>
@@ -43,8 +42,6 @@
               <%= f.text_area :text, class: "textbox", placeholder: "投稿へのコメントを入力する" %>
               <%= f.submit "送信する", class: "form_submit"%>
             <% end %>
-          <% else %>
-            <p>コメントするにはログインが必要です</p>
           <% end %>
           <div id="comment_lists">
             <%= render 'comment_list' %>

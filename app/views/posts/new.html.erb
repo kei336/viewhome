@@ -2,9 +2,11 @@
   <h1>新規投稿</h1>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
+
       <%= form_with(model: @post, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
       <div class="field">
+
         <%= f.label :name, "オススメのアプリ名" %>
         <%= f.text_field :name, class: 'form-control' %>
 

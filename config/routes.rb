@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/logout',                to: 'sessions#destroy'
 
   get     'users/:id/likes',       to: 'users#likes'
-  post    'users/guest_sign_in',  to: 'users#new_guest' 
+  post    'users/guest_sign_in',   to: 'users#new_guest' 
   get     'posts/ranking',         to: 'posts#ranking'
   resources :posts,               only: [:new, :index, :show, :edit,:update, :create, :destroy]
   resources :users do
