@@ -63,7 +63,7 @@ http://54.150.64.95
 ・ユーザーフォロー機能
 
 ## ER図
-https://user-images.githubusercontent.com/70501780/100058625-ff546a00-2e6c-11eb-96e5-618ec6e05f47.jpg
+![ER](https://user-images.githubusercontent.com/70501780/100058625-ff546a00-2e6c-11eb-96e5-618ec6e05f47.jpg)
 
 
 
