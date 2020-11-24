@@ -13,8 +13,8 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  password: <%= Rails.application.credentials.db[:password] %>
+  socket: /tmp/mysql.sock
   variables:
     sql_mode: TRADITIONAL
   
@@ -41,5 +41,5 @@ production:
   # https://railsguides.jp/configuring.html#データベース接続をプールする
   #pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: viewhome
-  username: viewhome
-  password: <%= ENV['VIEWHOME_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= Rails.application.credentials.db[:password] %>
